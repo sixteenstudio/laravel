@@ -14,10 +14,22 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	
+	/**
+	 * Dependency-injected instance of the DbUserRepository class
+	 **/
+	private $users;
+	
+	public function __construct(DbUserRepositoryInterface $users)
+	{
+		$this->users = $users;
+	}
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+		$allUsers = $this->users->all();
+		
+		return View::make('hello')->with('allUsers', $allUsers);
 	}
 
 }

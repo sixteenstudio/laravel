@@ -17,6 +17,8 @@ ClassLoader::addDirectories(array(
 	app_path().'/controllers',
 	app_path().'/models',
 	app_path().'/database/seeds',
+	app_path().'/interfaces',
+	app_path().'/repositories',
 
 ));
 
@@ -81,3 +83,16 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Binds File
+|--------------------------------------------------------------------------
+|
+| Here we include our binds file for the application. This gives us a
+| a convenient place to keep our application binds, seperating it from the
+| rest of the application
+|
+*/
+
+require app_path().'/start/binds.php';
